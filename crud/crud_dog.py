@@ -2,7 +2,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import HTTPException
 from sqlalchemy.orm import Session
 from models import models
-from schemas import schemas
+from schemas.dog import DogCreate, DogUpdate
 from datetime import datetime
 import requests
 
@@ -15,7 +15,7 @@ def get_dog(db: Session, dog_id: int):
 def get_adopted_dogs(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Dog).filter(models.Dog.is_adopted == True).all()
 
-def create_user_dog(db: Session, dog: schemas.DogCreate, user_id: int):
+def create_user_dog(db: Session, dog: DogCreate, user_id: int):
     url = "https://dog.ceo/api/breeds/image/random"
     result = requests.get(url)
     image = result.json()
@@ -25,7 +25,7 @@ def create_user_dog(db: Session, dog: schemas.DogCreate, user_id: int):
     db.refresh(db_dog)
     return db_dog
 
-def update_dog(db: Session, dog_update: schemas.DogUpdate, dog_id: int):  #Hay que agregar excepciones
+def update_dog(db: Session, dog_update: DogUpdate, dog_id: int):  #Hay que agregar excepciones
     db_obj = db.query(models.Dog).filter(models.Dog.id == dog_id).first()
     obj_data = jsonable_encoder(db_obj)
     update_data = dog_update.dict(exclude_unset=True)

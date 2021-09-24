@@ -1,7 +1,7 @@
 from fastapi.encoders import jsonable_encoder
 from sqlalchemy.orm import Session
 from models import models
-from schemas import schemas
+from schemas.user import UserCreate, UserUpdate
 from config.db import engine
 
 def get_user(db: Session, user_id: int):
@@ -16,14 +16,14 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.User).offset(skip).limit(limit).all()
 
 
-def create_user(db: Session, user: schemas.UserCreate):
+def create_user(db: Session, user: UserCreate):
     db_user = models.User(**user.dict())
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
     return db_user
 
-def update_user(db: Session, user_update: schemas.UserUpdate, user_id: int):   #Hay que agregar excepciones
+def update_user(db: Session, user_update: UserUpdate, user_id: int):   #Hay que agregar excepciones
     db_obj = db.query(models.User).filter(models.User.id == user_id).first()
     obj_data = jsonable_encoder(db_obj)
     update_data = user_update.dict(exclude_unset=True)
