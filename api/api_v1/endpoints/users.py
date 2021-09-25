@@ -2,13 +2,12 @@ from typing import List
 from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
 from api import deps
-
 from crud import crud_user as crud
-from models import models
+from models import model_user
 from schemas.user import User, UserUpdate, UserCreate, DeleteUser
 from config.db import SessionLocal, engine
 
-models.Base.metadata.create_all(bind=engine)
+model_user.Base.metadata.create_all(bind=engine)
 
 router = APIRouter()
 

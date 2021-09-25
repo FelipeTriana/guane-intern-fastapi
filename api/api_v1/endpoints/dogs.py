@@ -1,15 +1,13 @@
 from typing import List
 from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
-from starlette.types import Message
 from api import deps
- 
 from crud import crud_dog as crud
-from models import models
+from models import model_dog
 from schemas.dog import Dog, DogCreate, DogUpdate, DeleteDog
 from config.db import SessionLocal, engine
- 
-models.Base.metadata.create_all(bind=engine)
+   
+model_dog.Base.metadata.create_all(bind=engine)
 
 router = APIRouter()
 

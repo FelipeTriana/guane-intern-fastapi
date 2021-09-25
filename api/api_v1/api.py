@@ -1,5 +1,4 @@
 from fastapi import APIRouter
-
 from api.api_v1.endpoints import users, dogs
 
 api_router = APIRouter()
