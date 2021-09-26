@@ -23,3 +23,8 @@ class Dog(DogBase):
 
 class DeleteDog(BaseModel):
     msm: str
+
+class Task(BaseModel):
+    # Celery task representation
+    task_id: str
+    status: str
