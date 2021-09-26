@@ -1,4 +1,17 @@
-# Ejecutando el proyecto por primera vez
+# Ejecutando el docker-compose
+
+Desplegara toda la infraestructura con los contenedores que corresponden al worker de celery, flower, redis, la aplicacion y la base de datos mysql: 
+
+```console
+docker-compose up
+``` 
+
+Una vez desplegada la infraestructura podra acceder a la documentacion de la aplicacion en el localhost:8001/docs y a flower en el localhost:5556
+
+
+# Ejecutando sin docker-compose
+
+Nota: Si se ejecuta sin docker-compose se deberia tener la infraestructura localmente.
 
 ## Crear el entorno virtual:
 
