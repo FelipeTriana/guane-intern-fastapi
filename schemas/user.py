@@ -1,4 +1,5 @@
 from typing import List, Optional
+
 from pydantic import BaseModel
 from schemas.dog import Dog
 
@@ -8,13 +9,16 @@ class UserBase(BaseModel):
     last_name: str
     email: str
     
+
 class UserCreate(UserBase):
     pass
+
 
 class UserUpdate(BaseModel):
     name: Optional[str]
     last_name: Optional[str]
     email: Optional[str]
+
 
 class User(UserBase):
     id: Optional[int]
@@ -22,6 +26,7 @@ class User(UserBase):
 
     class Config:
         orm_mode = True
+
 
 class DeleteUser(BaseModel):
     msm: str

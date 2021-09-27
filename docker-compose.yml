@@ -2,6 +2,18 @@ version: '3.7'
 
 services:
 
+  mysqldb:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'guanedog'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3307:3306'
+  redis:
+    container_name: redis
+    image: redis:6.2-alpine
   app:
     build: ./
     ports:
@@ -17,19 +29,6 @@ services:
       DB_PASSWORD: $DB_PASSWORD
       DB_PORT: $DB_PORT
       DB_DATABASE: $DB_DATABASE
-  mysqldb:
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_DATABASE: 'guanedog'
-      MYSQL_PASSWORD: 'password'
-      MYSQL_ROOT_PASSWORD: 'password'
-    ports:
-      - '3307:3306'
-  redis:
-    container_name: redis
-    image: redis:6.2-alpine
-
   celery_worker:
     container_name: celery_worker
     build: .
@@ -42,7 +41,6 @@ services:
     depends_on:
       - app
       - redis
-
   flower:
     container_name: flower
     build: .

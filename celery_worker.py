@@ -5,8 +5,6 @@ from celery import Celery
 from dotenv import load_dotenv
 from celery.utils.log import get_task_logger
 
-
-# Create logger - enable to display messages on task logger
 celery_log = get_task_logger(__name__)
 
 load_dotenv(".env")

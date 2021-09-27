@@ -1,9 +1,9 @@
 # Ejecutando el docker-compose
 
-Desplegara toda la infraestructura con los contenedores que corresponden al worker de celery, flower, redis, la aplicacion y la base de datos mysql: 
+Desplegara toda la infraestructura con los contenedores que corresponden al worker de celery, flower, redis, la base de datos de mysql y la aplicacion: 
 
 ```console
-docker-compose up
+docker-compose up --build
 ``` 
 
 Una vez desplegada la infraestructura podra acceder a la documentacion de la aplicacion en el localhost:8001/docs y a flower en el localhost:5556

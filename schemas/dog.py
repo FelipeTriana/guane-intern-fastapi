@@ -1,4 +1,5 @@
 from typing import List, Optional
+
 from pydantic import BaseModel
 
 
@@ -6,11 +7,14 @@ class DogBase(BaseModel):
     name: Optional[str]
     is_adopted: Optional[bool]
 
+
 class DogCreate(DogBase):
     pass
 
+
 class DogUpdate(DogBase):        
     pass
+
 
 class Dog(DogBase):
     id: int
@@ -21,10 +25,12 @@ class Dog(DogBase):
     class Config:
         orm_mode = True
 
+
 class DeleteDog(BaseModel):
     msm: str
 
+
+#Celery task representation
 class Task(BaseModel):
-    # Celery task representation
     task_id: str
     status: str
