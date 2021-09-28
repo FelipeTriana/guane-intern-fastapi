@@ -1,9 +1,9 @@
 from fastapi.encoders import jsonable_encoder
 from sqlalchemy.orm import Session
 
-from schemas.user import UserCreate, UserUpdate
-from models import model_user
-from models import model_dog
+from app.schemas.user import UserCreate, UserUpdate
+from app.models import model_user
+from app.models import model_dog
 
 
 def get_user(db: Session, user_id: int):

@@ -3,11 +3,11 @@ from typing import List
 from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
 
-from api import deps
-from crud import crud_user 
-from models import model_user
-from schemas.user import User, UserUpdate, UserCreate, DeleteUser
-from config.db import engine
+from app.api import deps
+from app.crud import crud_user 
+from app.models import model_user
+from app.schemas.user import User, UserUpdate, UserCreate, DeleteUser
+from app.config.db import engine
 
 model_user.Base.metadata.create_all(bind=engine)
 

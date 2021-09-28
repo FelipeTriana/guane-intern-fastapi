@@ -3,14 +3,14 @@ from typing import List
 from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
  
-from schemas.dog import Dog, DogCreate, DogUpdate, DeleteDog, Task
-from models import model_dog
-from crud import crud_user 
-from crud import crud_dog 
-from api import deps
-from config.db import engine
+from app.schemas.dog import Dog, DogCreate, DogUpdate, DeleteDog, Task
+from app.models import model_dog
+from app.crud import crud_user 
+from app.crud import crud_dog 
+from app.api import deps
+from app.config.db import engine
 from celery_worker import create_task
-from core.security import verify_token
+from app.core.security import verify_token
   
 model_dog.Base.metadata.create_all(bind=engine)
 
@@ -55,6 +55,9 @@ def update_dog_with_name(dog_name: str, dog_update: DogUpdate, db: Session = Dep
     db_dog = crud_dog.get_dog_by_name(db, dog_name=dog_name)
     if db_dog is None:
         raise HTTPException(status_code=404, detail="Dog not found")
+    db_dog_name = crud_dog.get_dog_by_name(db, dog_name=dog_update.name)
+    if db_dog_name and db_dog_name.id != db_dog.id: 
+        raise HTTPException(status_code=400, detail="Name already registered, choose other name")
     return crud_dog.update_dog_by_name(db=db, dog_update=dog_update, dog_name=dog_name)
 
 
@@ -79,6 +82,9 @@ def update_dog_with_id(dog_id: int, dog_update: DogUpdate, db: Session = Depends
     db_dog = crud_dog.get_dog(db, dog_id=dog_id)
     if db_dog is None:
         raise HTTPException(status_code=404, detail="Dog not found")
+    db_dog_name = crud_dog.get_dog_by_name(db, dog_name=dog_update.name)
+    if db_dog_name and db_dog_name.id != db_dog.id: 
+        raise HTTPException(status_code=400, detail="Name already registered, choose other name")
     return crud_dog.update_dog(db=db, dog_update=dog_update, dog_id=dog_id)
 
 

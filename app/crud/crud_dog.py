@@ -4,9 +4,9 @@ import requests
 from fastapi.encoders import jsonable_encoder
 from sqlalchemy.orm import Session
 
-from schemas.dog import DogCreate, DogUpdate
-from core.settings import API_DOG_URL 
-from models import model_dog
+from app.schemas.dog import DogCreate, DogUpdate
+from app.core.settings import API_DOG_URL 
+from app.models import model_dog
 
 
 def get_dogs(db: Session, skip: int = 0, limit: int = 100):

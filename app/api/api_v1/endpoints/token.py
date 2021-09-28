@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Body, Response
 
-from schemas.token import  TokenModel, TokenRespose
-from core.security import post_token_service
+from app.schemas.token import  TokenModel, TokenRespose
+from app.core.security import post_token_service
 
 router = APIRouter()
         

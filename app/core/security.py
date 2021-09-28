@@ -5,8 +5,8 @@ from jose import jwt
 from fastapi import HTTPException, Depends
 from fastapi.security import HTTPBasicCredentials, HTTPBearer
 
-from schemas.token import TokenRespose
-from core.settings import TOKEN_EXPIRE, ALGORITHM, SECRET
+from app.schemas.token import TokenRespose
+from app.core.settings import TOKEN_EXPIRE, ALGORITHM, SECRET
  
 security = HTTPBearer()
 

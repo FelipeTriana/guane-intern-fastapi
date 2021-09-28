@@ -2,7 +2,7 @@ import requests
 import shutil
 import os
 
-from core.settings import API_GUANE_URL 
+from app.core.settings import API_GUANE_URL 
 
  
 def upload_file(file: any):

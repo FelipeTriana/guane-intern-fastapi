@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from sqlalchemy import Column, Integer, String 
 from sqlalchemy.orm import relationship
 
-from config.db import Base
+from app.config.db import Base
 
 if TYPE_CHECKING:
     from .model_dog import Dog  

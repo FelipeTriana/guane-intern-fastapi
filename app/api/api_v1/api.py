@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from api.api_v1.endpoints import users, dogs, token, uploadfile
+from app.api.api_v1.endpoints import users, dogs, token, uploadfile
 
 api_router = APIRouter()
 

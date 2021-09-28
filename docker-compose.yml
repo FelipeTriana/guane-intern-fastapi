@@ -18,11 +18,12 @@ services:
     build: ./
     ports:
       - 8001:8000
-    command: uvicorn main:app --host 0.0.0.0 --reload
+    command: uvicorn app.main:app --host 0.0.0.0 --reload
     volumes:
       - ./:/usr/src/app
     depends_on:
       - 'mysqldb'
+      - 'redis'
     environment:
       DB_HOST: mysqldb
       DB_USER: $DB_USER

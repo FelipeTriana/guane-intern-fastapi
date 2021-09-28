@@ -1,7 +1,8 @@
 from typing import List, Optional
 
 from pydantic import BaseModel
-from schemas.dog import Dog
+
+from app.schemas.dog import Dog
 
 
 class UserBase(BaseModel):

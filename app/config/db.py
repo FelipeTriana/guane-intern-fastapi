@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-from core.settings import DB_USER, DB_PASSWORD, DB_HOST,DB_PORT,DB_DATABASE
+from app.core.settings import DB_USER, DB_PASSWORD, DB_HOST,DB_PORT,DB_DATABASE
 
 
 SQLALCHEMY_DATABASE_URL2 = f'mysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_DATABASE}'

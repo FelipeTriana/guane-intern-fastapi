@@ -1,6 +1,6 @@
 from fastapi import APIRouter, File, UploadFile
 
-from crud import crud_file 
+from app.crud import crud_file 
 
 router = APIRouter()
 
