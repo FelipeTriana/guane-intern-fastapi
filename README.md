@@ -53,5 +53,5 @@ pip install -r requeriments.txt
 ## Correr el proyecto con uvicorn
 
 ```console
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 ```
