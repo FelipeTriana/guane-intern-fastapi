@@ -13,7 +13,7 @@ El siguiente comando desplegara toda la infraestructura que corresponde al worke
 docker-compose up --build
 ``` 
 
-Nota: Solo la primera vez que se lanza el comando el contenedor de MySQL suele desplegarse despues que el de la app, en caso de presentar problemas de conexion con mysql solamente cancelar el proceso con "ctrl + c" y volver a lanzar el comando:
+Nota: Solo la primera vez que se lanza el comando el contenedor de MySQL suele desplegarse despues que el de la app, en caso de presentar problemas de conexion con mysql cancelar el proceso con "ctrl + c" y volver a lanzar el comando:
 
 ```console
 docker-compose up 
