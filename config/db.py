@@ -7,7 +7,7 @@ from core.settings import DB_USER, DB_PASSWORD, DB_HOST,DB_PORT,DB_DATABASE
 
 SQLALCHEMY_DATABASE_URL2 = f'mysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_DATABASE}'
 
-engine = create_engine(SQLALCHEMY_DATABASE_URL2) 
+engine = create_engine(SQLALCHEMY_DATABASE_URL2, pool_pre_ping=True) 
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

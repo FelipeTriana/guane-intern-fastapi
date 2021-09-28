@@ -2,7 +2,7 @@ from typing import List
 
 from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
-
+ 
 from schemas.dog import Dog, DogCreate, DogUpdate, DeleteDog, Task
 from models import model_dog
 from crud import crud_user 
