@@ -1,7 +1,5 @@
 # guane-intern-fastapi
 
-App para aplicar al perfil de desarrollador backend en Guane Enterprises. 
-
 Se esta utilizando el framework de python FastAPI, MySQL como base de datos, Celery como cola de tareas, Redis como message broker y Flower para monitorear las tareas de Celery.
 
 
